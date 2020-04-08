@@ -1,0 +1,14 @@
+//
+//  XZQ_Prefix.pch
+//  AudioAndVideo
+//
+//  Created by qhzc-iMac-02 on 2020/4/8.
+//  Copyright © 2020 Xuzq. All rights reserved.
+//
+
+#ifndef XZQ_Prefix_pch
+#define XZQ_Prefix_pch
+
+#import "XZQBaseDefinition.h"
+
+#endif

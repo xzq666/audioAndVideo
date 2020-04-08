@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RootTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +15,17 @@
 
 @implementation AppDelegate
 
+@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    if (@available(iOS 13,*)) {
+    } else {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        RootTabBarController *rootNavgationController = [[RootTabBarController alloc] init];
+        self.window.rootViewController = rootNavgationController;
+        [self.window makeKeyAndVisible];
+    }
     return YES;
 }
 
