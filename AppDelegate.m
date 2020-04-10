@@ -21,12 +21,34 @@
     // Override point for customization after application launch.
     if (@available(iOS 13,*)) {
     } else {
+        if (@available(iOS 13.0, *)) {
+            if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+                [ZXTheme defaultTheme].zx_darkTheme = YES;
+            } else {
+                [ZXTheme defaultTheme].zx_darkTheme = NO;
+            }
+        }
+        [CommonUtils initDarkTheme];
+        [[ZXTheme defaultTheme] zx_themeUpdate];
+        
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         RootTabBarController *rootNavgationController = [[RootTabBarController alloc] init];
         self.window.rootViewController = rootNavgationController;
         [self.window makeKeyAndVisible];
     }
     return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    if (@available(iOS 13.0, *)) {
+        if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            [ZXTheme defaultTheme].zx_darkTheme = YES;
+        } else {
+            [ZXTheme defaultTheme].zx_darkTheme = NO;
+        }
+    }
+    [CommonUtils initDarkTheme];
+    [[ZXTheme defaultTheme] zx_themeUpdate];
 }
 
 

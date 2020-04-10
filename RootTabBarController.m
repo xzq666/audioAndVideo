@@ -55,6 +55,7 @@
     }
     
     UIButton *centerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    centerBtn.tag = 10001;
     centerBtn.frame = CGRectMake(SCREEN_WIDTH / 2 - 30 , 0, 60, 60);
     [centerBtn addTarget:self action:@selector(centerClick) forControlEvents:UIControlEventTouchUpInside];
     [self.tabBar addSubview:centerBtn];
@@ -90,6 +91,16 @@
     self.tabBar.shadowImage = [UIImage new];
     
     [self.tabBar setClipsToBounds:YES];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection*)previousTraitCollection {
+    [super traitCollectionDidChange:previousTraitCollection];
+    if(@available(iOS 13.0, *)) {
+        if ([self.traitCollection hasDifferentColorAppearanceComparedToTraitCollection:previousTraitCollection]) {
+            [self setUI];
+            [self setupTabBarBackgroundImage];
+        }
+    }
 }
 
 @end

@@ -12,6 +12,16 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    if (@available(iOS 13.0, *)) {
+        if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            [ZXTheme defaultTheme].zx_darkTheme = YES;
+        } else {
+            [ZXTheme defaultTheme].zx_darkTheme = NO;
+        }
+    }
+    [CommonUtils initDarkTheme];
+    [[ZXTheme defaultTheme] zx_themeUpdate];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.windowScene = (UIWindowScene *)scene;
     RootTabBarController *rootNavgationController = [[RootTabBarController alloc] init];
@@ -31,6 +41,15 @@
 - (void)sceneDidBecomeActive:(UIScene *)scene {
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    if (@available(iOS 13.0, *)) {
+        if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            [ZXTheme defaultTheme].zx_darkTheme = YES;
+        } else {
+            [ZXTheme defaultTheme].zx_darkTheme = NO;
+        }
+    }
+    [CommonUtils initDarkTheme];
+    [[ZXTheme defaultTheme] zx_themeUpdate];
 }
 
 

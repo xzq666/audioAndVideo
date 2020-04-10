@@ -10,5 +10,11 @@
 #define XZQ_Prefix_pch
 
 #import "XZQBaseDefinition.h"
+#import "CommonUtils.h"
+
+#import <GPUImage.h>
+#import <Photos/Photos.h>
+
+#import "ZXTheme.h"
 
 #endif
